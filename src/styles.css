@@ -2,3 +2,7 @@
 .container {
     margin-top: 20px;
 }
+
+p{
+    text-align: justify;
+}

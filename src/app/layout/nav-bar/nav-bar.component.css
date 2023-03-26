@@ -3,3 +3,10 @@
     padding: 10px;
     color: white;
 }
+
+.nav-item{
+    margin-bottom: 10px;
+    background-color: white;
+    color: blue;
+    padding: 10px;
+}

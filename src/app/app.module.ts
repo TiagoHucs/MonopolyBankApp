@@ -10,6 +10,7 @@ import { ExtratoComponent } from './layout/extrato/extrato.component';
 import { TransferenciaComponent } from './layout/transferencia/transferencia.component';
 import { TituloComponent } from './layout/util/titulo/titulo.component';
 import { NavBarComponent } from './layout/nav-bar/nav-bar.component';
+import { GraficoComponent } from './layout/util/grafico/grafico.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NavBarComponent } from './layout/nav-bar/nav-bar.component';
     ExtratoComponent,
     TransferenciaComponent,
     TituloComponent,
-    NavBarComponent
+    NavBarComponent,
+    GraficoComponent
   ],
   imports: [
     BrowserModule,

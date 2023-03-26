@@ -6,3 +6,8 @@
 p{
     text-align: justify;
 }
+
+body {
+    background: linear-gradient(to left top, rgb(220, 220, 220), white);
+    background-attachment: fixed; /*edit*/
+}

@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./transferencia.component.css']
 })
 export class TransferenciaComponent {
-
+opcoesUsuarios = ['João', 'Maria', 'Alfredo']
 }

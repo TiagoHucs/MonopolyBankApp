@@ -1,16 +1,22 @@
-<div class="barra-top">
-    <div class="row">
-        <div class="col">
-            AppBancoImobiliario
-        </div>
-        <div class="col text-end">
-            <a routerLink="home">Home</a>
-            |
-            <a routerLink="extrato">Extrato</a>
-            |
-            <a routerLink="transferencia">Transferir</a>
-            |
-            <a routerLink="">Sair</a>
-        </div>
-    </div>
-</div>
+<nav class="navbar navbar-expand-md bg-primary navbar-dark">
+    <a class="navbar-brand" href="#">AppBancoImobiliario</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar" data-toggle="collapse">
+      <ul class="navbar-nav">
+        <li routerLink="home" class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show" >
+            <span>Home</span>
+        </li>
+        <li routerLink="extrato" class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+            <span>Extrato</span>
+        </li>
+        <li routerLink="transferencia" class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+            <span>Transferir</span>
+        </li>   
+        <li routerLink="" class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+            <span>Sair</span>
+        </li>    
+      </ul>
+    </div>  
+  </nav>

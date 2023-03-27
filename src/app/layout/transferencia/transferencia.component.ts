@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { notificar } from '../util/simple-alert';
+
 
 @Component({
   selector: 'app-transferencia',
@@ -7,4 +9,11 @@ import { Component } from '@angular/core';
 })
 export class TransferenciaComponent {
 opcoesUsuarios = ['João', 'Maria', 'Alfredo']
+
+constructor(){}
+
+  transferir(){
+    notificar('sucesso','Transferencia realizada com sucesso',0);
+  }
+
 }

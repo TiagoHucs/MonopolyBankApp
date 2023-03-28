@@ -11,6 +11,7 @@ import { TransferenciaComponent } from './layout/transferencia/transferencia.com
 import { TituloComponent } from './layout/util/titulo/titulo.component';
 import { NavBarComponent } from './layout/nav-bar/nav-bar.component';
 import { GraficoComponent } from './layout/util/grafico/grafico.component';
+import { SimpleAlertComponent } from './layout/util/simple-alert/simple-alert.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { GraficoComponent } from './layout/util/grafico/grafico.component';
     TransferenciaComponent,
     TituloComponent,
     NavBarComponent,
-    GraficoComponent
+    GraficoComponent,
+    SimpleAlertComponent
   ],
   imports: [
     BrowserModule,

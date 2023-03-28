@@ -1,18 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
-.container {
-    margin-top: 20px;
-}
-
-p{
-    text-align: justify;
-}
-
-body {
-    background: linear-gradient(to left top, rgb(220, 220, 220), white);
-    background-attachment: fixed; /*edit*/
-}
-
-/*alerta*/
 .sp-alert {
     position: fixed;
     transform: translateY(-50%);
@@ -31,12 +16,4 @@ body {
   }
   .sp-alert-error {
     background-color: #a72828;
-  }
-
-  .sp-show {
-    right: 1%;
-  }
-
-  .sp-exit {
-    right: -100%;
   }

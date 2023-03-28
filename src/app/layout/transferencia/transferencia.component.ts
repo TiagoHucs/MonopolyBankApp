@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { notificar } from '../util/simple-alert';
+import { SimpleAlertService } from '../util/simple-alert/simple-alert.service';
 
 
 @Component({
@@ -10,10 +10,10 @@ import { notificar } from '../util/simple-alert';
 export class TransferenciaComponent {
 opcoesUsuarios = ['João', 'Maria', 'Alfredo']
 
-constructor(){}
+constructor(private service: SimpleAlertService){}
 
   transferir(){
-    notificar('sucesso','Transferencia realizada com sucesso',0);
+      this.service.notificar('SUCESSO','ESSA PARADA É BOA!',0)
   }
 
 }

@@ -1,5 +1,8 @@
-package com.MonopolyBankAppServer;
+package com.MonopolyBankAppServer.controllers;
 
+import com.MonopolyBankAppServer.security.JwtUtils;
+import com.MonopolyBankAppServer.Entities.LoginRequest;
+import com.MonopolyBankAppServer.Entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,17 +10,13 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
-
 @RestController
 @RequestMapping("rest")
-public class BankController {
+public class SecurityController {
 
     @Autowired
     private JwtUtils jwtUtils;
 
-    @Autowired
-    private BankService bankService;
 
     @PostMapping("login")
     public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest){
@@ -30,12 +29,6 @@ public class BankController {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         }
     }
-
-    @GetMapping("balance")//TODO: mover pro controller especifico
-    public ResponseEntity<BigDecimal> getBalance(){
-        return ResponseEntity.ok(bankService.getBalance());
-    }
-
 
     private static void autenticateInSpringSecurity(String username) {
         User userDetails = new User(username,null);

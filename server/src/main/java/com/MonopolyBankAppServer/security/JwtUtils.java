@@ -1,4 +1,4 @@
-package com.MonopolyBankAppServer;
+package com.MonopolyBankAppServer.security;
 
 import io.jsonwebtoken.*;
 

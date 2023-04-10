@@ -18,16 +18,6 @@ public class AccountService {
     @Autowired
     private AccountRepository accountRepository;
 
-    public void create(User user){
-        Account account = new Account();
-
-        user.setAccount(account);
-    }
-
-    public void create(){
-
-    }
-
     public BigDecimal getBalance() {
         UUID accountId = userService.getLoggerUser().getAccount().getId();
         return accountRepository.getReferenceById(accountId).getBalance();

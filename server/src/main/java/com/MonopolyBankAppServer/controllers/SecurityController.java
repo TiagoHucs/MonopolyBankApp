@@ -3,6 +3,7 @@ package com.MonopolyBankAppServer.controllers;
 import com.MonopolyBankAppServer.security.JwtUtils;
 import com.MonopolyBankAppServer.Entities.LoginRequest;
 import com.MonopolyBankAppServer.Entities.User;
+import com.MonopolyBankAppServer.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,18 +16,22 @@ import org.springframework.web.bind.annotation.*;
 public class SecurityController {
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     private JwtUtils jwtUtils;
 
 
     @PostMapping("login")
     public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest){
-        if("admin".equals(loginRequest.getUsername()) && "123456".equals(loginRequest.getPassword())){
+        User user = userService.getUser(loginRequest);
+        if(user != null){
             String username = loginRequest.getUsername();
             String token = jwtUtils.generateToken(username);
             autenticateInSpringSecurity(username);
             return ResponseEntity.ok(token);
         } else {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
     }
 

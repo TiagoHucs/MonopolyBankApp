@@ -14,7 +14,8 @@ public class AppConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
+        //TODO: h2 only in dev
         registry.addInterceptor(jwtInterceptor)
-                .excludePathPatterns("/rest/login","/error");
+                .excludePathPatterns("/rest/login","/error","/rest/users/create","/h2");
     }
 }

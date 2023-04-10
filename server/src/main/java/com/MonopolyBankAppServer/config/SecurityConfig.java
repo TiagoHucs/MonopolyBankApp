@@ -15,7 +15,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/rest/**").permitAll()
                 .antMatchers("/h2/**").permitAll()
-                .and()
-            .httpBasic();
+                .anyRequest().authenticated();
     }
 }

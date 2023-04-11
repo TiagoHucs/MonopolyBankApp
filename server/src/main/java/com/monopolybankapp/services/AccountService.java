@@ -1,5 +1,7 @@
 package com.monopolybankapp.services;
 
+import com.monopolybankapp.Entities.User;
+import com.monopolybankapp.config.error.NegocioException;
 import com.monopolybankapp.repositories.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +18,11 @@ public class AccountService {
     @Autowired
     private AccountRepository accountRepository;
 
-    public BigDecimal getBalance() {
-        Long accountId = userService.getLoggerUser().getAccount().getId();
-        return accountRepository.getReferenceById(accountId).getBalance();
+    public BigDecimal getBalance() throws NegocioException {
+        User user = userService.getLoggerUser();
+        if(user.getAccount() == null){
+            throw new NegocioException("Usuario sem conta associada");
+        }
+        return user.getAccount().getBalance();
     }
 }

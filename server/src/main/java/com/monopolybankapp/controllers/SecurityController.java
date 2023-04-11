@@ -28,16 +28,10 @@ public class SecurityController {
         if(user != null){
             String username = loginRequest.getUsername();
             String token = jwtUtils.generateToken(username);
-            autenticateInSpringSecurity(username);
             return ResponseEntity.ok(token);
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
     }
 
-    private static void autenticateInSpringSecurity(String username) {
-        User userDetails = new User(username,null);
-        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, null);
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-    }
 }

@@ -1,5 +1,6 @@
 package com.monopolybankapp.controllers;
 
+import com.monopolybankapp.config.error.NegocioException;
 import com.monopolybankapp.services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,7 @@ public class AccountController {
     private AccountService accountService;
 
     @GetMapping("balance")
-    public ResponseEntity<BigDecimal> getBalance(){
+    public ResponseEntity<BigDecimal> getBalance() throws NegocioException {
         return ResponseEntity.ok(accountService.getBalance());
     }
 

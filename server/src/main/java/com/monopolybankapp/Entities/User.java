@@ -28,8 +28,4 @@ public class User {
     @JoinColumn(name = "ACCOUNT", referencedColumnName = "ID")
     private Account account;
 
-    public <E> User(String username,String password) {
-        this.username = username;
-        this.password = password;
-    }
 }

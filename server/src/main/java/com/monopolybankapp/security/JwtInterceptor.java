@@ -36,18 +36,12 @@ public class JwtInterceptor implements HandlerInterceptor {
             return false;
         }
 
+        UserContext.setUserInfo(jwtUtils.getUsernameFromToken(token));
         return true;
     }
 
     @Override
-    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        request.setAttribute("isAutenticado",Boolean.TRUE);
-        HandlerInterceptor.super.postHandle(request, response, handler, modelAndView);
-    }
-
-    @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        request.setAttribute("isOk",Boolean.TRUE);
-        HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
+        UserContext.clear();
     }
 }

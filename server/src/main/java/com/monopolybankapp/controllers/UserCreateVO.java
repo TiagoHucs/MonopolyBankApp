@@ -1,4 +1,4 @@
-package com.MonopolyBankAppServer.controllers;
+package com.monopolybankapp.controllers;
 
 import lombok.Getter;
 import lombok.Setter;

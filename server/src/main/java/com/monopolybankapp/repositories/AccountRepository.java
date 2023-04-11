@@ -1,6 +1,6 @@
-package com.MonopolyBankAppServer.repositories;
+package com.monopolybankapp.repositories;
 
-import com.MonopolyBankAppServer.Entities.Account;
+import com.monopolybankapp.Entities.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;

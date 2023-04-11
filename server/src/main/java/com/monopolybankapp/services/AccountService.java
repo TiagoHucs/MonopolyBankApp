@@ -1,8 +1,6 @@
-package com.MonopolyBankAppServer.services;
+package com.monopolybankapp.services;
 
-import com.MonopolyBankAppServer.Entities.Account;
-import com.MonopolyBankAppServer.Entities.User;
-import com.MonopolyBankAppServer.repositories.AccountRepository;
+import com.monopolybankapp.repositories.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

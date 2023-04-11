@@ -1,6 +1,6 @@
-package com.MonopolyBankAppServer.config;
+package com.monopolybankapp.config;
 
-import com.MonopolyBankAppServer.security.JwtInterceptor;
+import com.monopolybankapp.security.JwtInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

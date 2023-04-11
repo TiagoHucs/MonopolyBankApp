@@ -1,4 +1,4 @@
-package com.MonopolyBankAppServer.Entities;
+package com.monopolybankapp.Entities;
 
 import lombok.Getter;
 import lombok.Setter;

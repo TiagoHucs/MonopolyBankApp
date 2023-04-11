@@ -1,6 +1,6 @@
-package com.MonopolyBankAppServer.controllers;
+package com.monopolybankapp.controllers;
 
-import com.MonopolyBankAppServer.services.AccountService;
+import com.monopolybankapp.services.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

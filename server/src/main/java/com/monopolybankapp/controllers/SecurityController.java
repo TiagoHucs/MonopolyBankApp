@@ -1,9 +1,9 @@
-package com.MonopolyBankAppServer.controllers;
+package com.monopolybankapp.controllers;
 
-import com.MonopolyBankAppServer.security.JwtUtils;
-import com.MonopolyBankAppServer.Entities.LoginRequest;
-import com.MonopolyBankAppServer.Entities.User;
-import com.MonopolyBankAppServer.services.UserService;
+import com.monopolybankapp.security.JwtUtils;
+import com.monopolybankapp.Entities.LoginRequest;
+import com.monopolybankapp.Entities.User;
+import com.monopolybankapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

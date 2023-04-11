@@ -1,8 +1,6 @@
-package com.MonopolyBankAppServer.security;
+package com.monopolybankapp.security;
 
 import io.jsonwebtoken.*;
-
-import javax.xml.bind.DatatypeConverter;
 
 import org.springframework.stereotype.Component;
 

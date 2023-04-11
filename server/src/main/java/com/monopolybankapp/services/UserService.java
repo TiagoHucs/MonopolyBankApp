@@ -1,16 +1,14 @@
-package com.MonopolyBankAppServer.services;
+package com.monopolybankapp.services;
 
-import com.MonopolyBankAppServer.Entities.Account;
-import com.MonopolyBankAppServer.Entities.LoginRequest;
-import com.MonopolyBankAppServer.Entities.User;
-import com.MonopolyBankAppServer.controllers.UserCreateVO;
-import com.MonopolyBankAppServer.repositories.UserRepository;
+import com.monopolybankapp.Entities.LoginRequest;
+import com.monopolybankapp.Entities.User;
+import com.monopolybankapp.controllers.UserCreateVO;
+import com.monopolybankapp.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 

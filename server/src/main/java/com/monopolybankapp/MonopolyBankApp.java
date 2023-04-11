@@ -1,13 +1,13 @@
-package com.MonopolyBankAppServer;
+package com.monopolybankapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MonopolyBankAppServerApplication {
+public class MonopolyBankApp {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MonopolyBankAppServerApplication.class, args);
+		SpringApplication.run(MonopolyBankApp.class, args);
 	}
 
 }

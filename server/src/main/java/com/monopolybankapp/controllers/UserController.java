@@ -4,10 +4,7 @@ import com.monopolybankapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 
@@ -23,7 +20,7 @@ public class UserController {
         return ResponseEntity.ok(BigDecimal.ZERO);
     }
 
-    @GetMapping("create")
+    @PostMapping("create")
     public ResponseEntity<Void> create(@RequestBody UserCreateVO userVo){
         userService.create(userVo);
         return ResponseEntity.status(HttpStatus.CREATED).build();

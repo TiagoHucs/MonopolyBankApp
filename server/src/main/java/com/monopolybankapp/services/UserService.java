@@ -23,7 +23,7 @@ public class UserService {
         return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 
-    public User getUser(UUID id){
+    public User getUser(Long id){
         return userRepository.getReferenceById(id);
     }
 

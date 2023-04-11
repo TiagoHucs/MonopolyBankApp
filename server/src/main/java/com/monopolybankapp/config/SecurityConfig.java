@@ -15,6 +15,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/rest/**").permitAll()
                 .antMatchers("/h2/**").permitAll()
+                .antMatchers("/rest/users/create").permitAll()
                 .anyRequest().authenticated();
+        //para visualizar o banco h2
+        http.headers().frameOptions().sameOrigin();
     }
 }

@@ -17,7 +17,7 @@ public class AccountService {
     private AccountRepository accountRepository;
 
     public BigDecimal getBalance() {
-        UUID accountId = userService.getLoggerUser().getAccount().getId();
+        Long accountId = userService.getLoggerUser().getAccount().getId();
         return accountRepository.getReferenceById(accountId).getBalance();
     }
 }

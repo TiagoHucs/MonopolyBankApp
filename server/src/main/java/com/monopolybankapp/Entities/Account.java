@@ -15,10 +15,9 @@ import java.util.UUID;
 public class Account {
 
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", updatable = false, nullable = false)
-    private UUID id;
+    private Long id;
 
     @Column(name = "BALANCE",nullable = false)
     private BigDecimal balance;

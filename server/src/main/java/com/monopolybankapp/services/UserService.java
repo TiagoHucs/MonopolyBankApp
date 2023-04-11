@@ -1,5 +1,6 @@
 package com.monopolybankapp.services;
 
+import com.monopolybankapp.Entities.Account;
 import com.monopolybankapp.Entities.LoginRequest;
 import com.monopolybankapp.Entities.User;
 import com.monopolybankapp.controllers.UserCreateVO;
@@ -35,6 +36,8 @@ public class UserService {
         User user = new User();
         user.setUsername(userVo.getUsername());
         user.setPassword(userVo.getPassword());
+        Account account = new Account();
+        user.setAccount(account);
         userRepository.save(user);
     }
 

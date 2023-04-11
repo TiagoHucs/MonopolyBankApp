@@ -20,7 +20,7 @@ public class Account {
     private Long id;
 
     @Column(name = "BALANCE",nullable = false)
-    private BigDecimal balance;
+    private BigDecimal balance = BigDecimal.valueOf(1500);
 
     @OneToOne(mappedBy = "account")
     private User owner;

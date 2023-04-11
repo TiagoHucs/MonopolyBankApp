@@ -2,6 +2,7 @@ package com.monopolybankapp.controllers;
 
 import com.monopolybankapp.config.error.NegocioException;
 import com.monopolybankapp.services.AccountService;
+import com.monopolybankapp.validators.AccountValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,9 +16,19 @@ public class AccountController {
     @Autowired
     private AccountService accountService;
 
+    @Autowired
+    private AccountValidator accountValidator;
+
     @GetMapping("balance")
     public ResponseEntity<BigDecimal> getBalance() throws NegocioException {
         return ResponseEntity.ok(accountService.getBalance());
+    }
+
+    @PostMapping("transfer")
+    public ResponseEntity<Void> transfer(@RequestBody TransferVO transfer) throws NegocioException {
+        accountValidator.tranfer(transfer.getAccountId(),transfer.getValue());
+        accountService.tranfer(transfer.getAccountId(),transfer.getValue());
+        return ResponseEntity.accepted().build();
     }
 
 

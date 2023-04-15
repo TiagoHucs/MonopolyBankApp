@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cadastro de usuário</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="cadastro.js"></script>
+</head>
+<body>
+    <h1>Cadastro de usuário</h1>
+	<form>
+		<label for="username">Nome de usuário:</label>
+		<input type="text" id="username" name="username"><br><br>
+		<label for="password">Senha:</label>
+		<input type="password" id="password" name="password"><br><br>
+		<input type="button" value="Cadastrar" onclick="cadastrar()">
+        <input type="button" value="Login" onclick="login()">
+	</form>
+</body>
+</html>

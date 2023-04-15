@@ -1,5 +1,6 @@
 package com.monopolybankapp.controllers;
 
+import com.monopolybankapp.Entities.HomeDetails;
 import com.monopolybankapp.config.error.NegocioException;
 import com.monopolybankapp.services.AccountService;
 import com.monopolybankapp.validators.AccountValidator;
@@ -19,9 +20,9 @@ public class AccountController {
     @Autowired
     private AccountValidator accountValidator;
 
-    @GetMapping("balance")
-    public ResponseEntity<BigDecimal> getBalance() throws NegocioException {
-        return ResponseEntity.ok(accountService.getBalance());
+    @GetMapping("home")
+    public ResponseEntity<HomeDetails> getBalance() throws NegocioException {
+        return ResponseEntity.ok(accountService.getHomeDetails());
     }
 
     @PostMapping("transfer")

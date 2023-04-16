@@ -1,4 +1,4 @@
-const API = 'http://localhost:8080/rest/account/tranfer';
+const API = 'http://localhost:8080/rest/account/home';
 
 
 function getHome(){
@@ -29,11 +29,11 @@ getHome();
 function montaHome(data){
     document.getElementById('clientBalance').innerText = data.balance;
     document.getElementById('clientName').innerText = data.clientName;
-     document.getElementById('menu').innerHTML = 
+     /* document.getElementById('menu').innerHTML = 
 `<div style="cursor: pointer">
     Home | Extrato | Transferencias
 </div>`; 
-   //menu.criaMenu()
+   //menu.criaMenu() */
 }
 
 
@@ -45,4 +45,8 @@ function getToken() {
 function sair() {
     localStorage.removeItem('token');
     window.location.href = 'login.html';
+}
+
+function transferir() {
+    window.location.href = 'transferencia.html';
 }

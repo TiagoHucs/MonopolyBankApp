@@ -16,7 +16,7 @@ function cadastrar() {
 			password: password
           }),
 		success: function(data) {
-			// redireciona para a página home
+			alert('Usuario cadastrado com sucesso.');
 			window.location.href = 'login.html';
 		},
 		error: function(jqXHR, textStatus, errorThrown) {

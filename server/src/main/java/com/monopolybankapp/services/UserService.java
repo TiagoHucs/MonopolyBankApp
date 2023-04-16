@@ -3,6 +3,7 @@ package com.monopolybankapp.services;
 import com.monopolybankapp.Entities.Account;
 import com.monopolybankapp.Entities.LoginRequest;
 import com.monopolybankapp.Entities.User;
+import com.monopolybankapp.Entities.UserOption;
 import com.monopolybankapp.controllers.UserCreateVO;
 import com.monopolybankapp.repositories.UserRepository;
 import com.monopolybankapp.security.UserContext;
@@ -11,6 +12,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -55,5 +57,14 @@ public class UserService {
         User user = new User();
         user.setUsername(username);
         return userRepository.findOne(Example.of(user)).get();
+    }
+
+    public List<UserOption> listOptions() {
+        List<User> list = userRepository.findAll();
+        List<UserOption> userOptionList = new ArrayList<>();
+        for (User user: list) {
+            userOptionList.add(new UserOption(user.getAccount().getId(), user.getUsername()));
+        }
+        return userOptionList;
     }
 }

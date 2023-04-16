@@ -1,7 +1,7 @@
 const API = 'http://localhost:8080/rest/';
 
 
-function getUser(){
+function getUsers(){
 $.ajax({
     url: API + 'users/list',
     type: 'GET',
@@ -47,10 +47,13 @@ function transfer() {
 	});
 }
 
-
 function montaOpcoes(data){
-    document.getElementById('clientBalance').innerText = data.balance;
-    document.getElementById('clientName').innerText = data.clientName;
+	console.log(data);
+	let options = ''
+	data.forEach(element => {
+		options += `<option value="${element.accountId}">${element.username}</option>`;
+	});
+    document.getElementById('userList').innerHTML = options;
 }
 
 
@@ -63,3 +66,9 @@ function sair() {
     localStorage.removeItem('token');
     window.location.href = 'login.html';
 }
+
+function voltar() {
+    window.location.href = 'home.html';
+}
+
+getUsers();

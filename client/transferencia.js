@@ -1,21 +1,18 @@
-const API = 'http://localhost:8080/rest/account/tranfer';
+const API = 'http://localhost:8080/rest/';
 
 
-function getHome(){
-// faz a chamada para a API da home
+function getUser(){
 $.ajax({
-    url: API,
+    url: API + 'users/list',
     type: 'GET',
     headers: {
         Authorization: 'Bearer ' + getToken()
     },
     success: function (data) {
-        // exibe os dados retornados pela API
-        montaHome(data);
+        montaOpcoes(data);
     },
     error: function (jqXHR, textStatus, errorThrown) {
         if (jqXHR.status === 403) {
-            // se o status for 403 (Forbidden), redireciona para a página de login
             window.location.href = 'login.html';
         } else {
             alert('Erro ao acessar a página home: ' + textStatus);
@@ -24,16 +21,36 @@ $.ajax({
 });
 }
 
-getHome();
+function transfer() {
+	// obtém os valores dos campos de login
+	var accountId = $('#accountId').val();
+	var value = $('#value').val();
 
-function montaHome(data){
+	// faz a chamada para a API de login com os dados informados
+	$.ajax({
+		url: API,
+		type: 'POST',
+        contentType: 'application/json',
+        headers: {
+			Authorization: 'Bearer ' + getToken()
+		},
+		data: JSON.stringify({
+			accountId: accountId,
+			value: value
+          }),
+		success: function(data) {
+			alert('Transferido');
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			alert('Erro ao fazer login: ' + textStatus);
+		}
+	});
+}
+
+
+function montaOpcoes(data){
     document.getElementById('clientBalance').innerText = data.balance;
     document.getElementById('clientName').innerText = data.clientName;
-     document.getElementById('menu').innerHTML = 
-`<div style="cursor: pointer">
-    Home | Extrato | Transferencias
-</div>`; 
-   //menu.criaMenu()
 }
 
 

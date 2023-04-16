@@ -5,9 +5,13 @@ import io.jsonwebtoken.*;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Component
 public class JwtUtils {
+
+    private static final Logger LOGGER = Logger.getLogger(JwtUtils.class.getName());
 
     private static final String SECRET_KEY = "mySecretKey"; // chave secreta usada para assinar o token
     private static final long EXPIRATION_TIME = 3600000; // tempo de expiração do token em milissegundos (1 hora)
@@ -24,19 +28,19 @@ public class JwtUtils {
     public boolean validateToken(String token) {
         try {
             Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token);
+            LOGGER.log(Level.INFO,"token válido");
             return true;
         } catch (SignatureException e) {
-            System.out.println("Assinatura do token inválida: " + e.getMessage());
+            LOGGER.log(Level.INFO,"Assinatura do token inválida: " + e.getMessage());
         } catch (MalformedJwtException e) {
-            System.out.println("Token inválido: " + e.getMessage());
+            LOGGER.log(Level.INFO,"Token inválido: " + e.getMessage());
         } catch (ExpiredJwtException e) {
-            System.out.println("Token expirado: " + e.getMessage());
+            LOGGER.log(Level.INFO,"Token expirado: " + e.getMessage());
         } catch (UnsupportedJwtException e) {
-            System.out.println("Token não suportado: " + e.getMessage());
+            LOGGER.log(Level.INFO,"Token não suportado: " + e.getMessage());
         } catch (IllegalArgumentException e) {
-            System.out.println("String do token vazia ou nula: " + e.getMessage());
+            LOGGER.log(Level.INFO,"String do token vazia ou nula: " + e.getMessage());
         }
-
         return false;
     }
 

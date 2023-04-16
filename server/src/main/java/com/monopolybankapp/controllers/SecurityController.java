@@ -11,9 +11,13 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 @RestController
 @RequestMapping("rest")
 public class SecurityController {
+    private static final Logger LOGGER = Logger.getLogger(SecurityController.class.getName());
 
     @Autowired
     private UserService userService;
@@ -28,8 +32,10 @@ public class SecurityController {
         if(user != null){
             String username = loginRequest.getUsername();
             String token = jwtUtils.generateToken(username);
+            LOGGER.log(Level.INFO,loginRequest.getUsername() + " logou com sucesso!");
             return ResponseEntity.ok(token);
         } else {
+            LOGGER.log(Level.INFO,loginRequest.getUsername() + " login com erro!");
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
     }

@@ -1,0 +1,12 @@
+body{
+    background-color: rgb(68, 68, 122);
+    color: rgb(240, 240, 240);
+}
+
+h1, h6{
+    margin-top: 20px;
+}
+
+hr{
+    background-color: rgb(240, 240, 240);
+}

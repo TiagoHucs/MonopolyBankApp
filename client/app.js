@@ -1,4 +1,4 @@
-const API = 'http://localhost:8080/rest/users/create';
+const API = 'http://localhost:8080/rest';
 
 //login
 function login() {
@@ -8,7 +8,7 @@ function login() {
 
     // faz a chamada para a API de login com os dados informados
     $.ajax({
-        url: API,
+        url: API + '/login/',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({
@@ -40,7 +40,7 @@ function cadastrar() {
 
     // faz a chamada para a API de login com os dados informados
     $.ajax({
-        url: API,
+        url: API + '/users/create',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({
@@ -61,7 +61,7 @@ function cadastrar() {
 function getHome() {
     // faz a chamada para a API da home
     $.ajax({
-        url: API,
+        url: API + '/account/home',
         type: 'GET',
         headers: {
             Authorization: 'Bearer ' + getToken()
@@ -71,8 +71,8 @@ function getHome() {
             montaHome(data);
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            if (jqXHR.status === 403) {
-                // se o status for 403 (Forbidden), redireciona para a página de login
+            if (jqXHR.status === 401) {
+                // se o status for 401 (UNAUTHORIZED), redireciona para a página de login
                 window.location.href = 'login.html';
             } else {
                 message(1, 'Erro ao acessar a página home: ' + textStatus);

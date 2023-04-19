@@ -13,15 +13,36 @@
 </head>
 
 <body>
-    <h1>Transferir</h1>
-    <select name="cars" id="accountId">
-        <span id="userList"></span>
-        <option id="userList" value="null">Escolha uma opcao</option>
-      </select><br><br>
-    <input type="number" id="value"><br><br>
-    <input type="button" value="Transferir" onclick="cadastrar()">
-    <input type="button" value="Voltar" onclick="voltar()">
-
+    <form class="container">
+      <div class="row text-center">
+        <div class="form-group col-sm-5 ">
+          <h6>Trasferencias</h6>
+          <hr>
+          <div id="success-message"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-sm-5 ">
+          <label for="accountId">Favorecido:</label>
+          <select class="form-control" name="cars" id="accountId">
+            <span id="userList"></span>
+            <option id="userList" value="null">Escolha uma opcao</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-sm-5 ">
+          <label for="value">Valor:</label>
+          <input class="form-control" type="number" id="value"><br><br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-sm-5 ">
+          <input type="button" class="btn btn-primary btn-block" value="Transferir" onclick="transferir()">
+          <input type="button" class="btn btn-primary btn-block" value="Voltar" onclick="goTo('home.html')">
+        </div>
+      </div>
+    </form>
 </body>
 
 </html>

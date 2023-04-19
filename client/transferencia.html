@@ -23,17 +23,16 @@
       </div>
       <div class="row">
         <div class="form-group col-sm-5 ">
-          <label for="accountId">Favorecido:</label>
-          <select class="form-control" name="cars" id="accountId">
-            <span id="userList"></span>
-            <option id="userList" value="null">Escolha uma opcao</option>
+          <label for="favorecidoAccountId">Favorecido:</label>
+          <select class="form-control" name="cars" id="favorecidoAccountId">
+            <optgroup id="favorecidosList"></optgroup>
           </select>
         </div>
       </div>
       <div class="row">
         <div class="form-group col-sm-5 ">
-          <label for="value">Valor:</label>
-          <input class="form-control" type="number" id="value"><br><br>
+          <label for="trasferValue">Valor:</label>
+          <input class="form-control" type="number" id="trasferValue"><br><br>
         </div>
       </div>
       <div class="row">
@@ -43,6 +42,6 @@
         </div>
       </div>
     </form>
+    <script>obterFavorecidos()</script> 
 </body>
-
 </html>

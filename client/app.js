@@ -86,16 +86,16 @@ function montaHome(data) {
     document.getElementById('clientName').innerText = data.clientName;
 }
 
-//tranferir
-function getUsers() {
+//tranferencias
+function obterFavorecidos() {
     $.ajax({
-        url: API + 'users/list',
+        url: API + '/users/list',
         type: 'GET',
         headers: {
             Authorization: 'Bearer ' + getToken()
         },
         success: function (data) {
-            montaOpcoes(data);
+            criaOpcoesFavorecidos(data);
         },
         error: function (jqXHR, textStatus, errorThrown) {
             if (jqXHR.status === 403) {
@@ -107,14 +107,14 @@ function getUsers() {
     });
 }
 
-function transfer() {
+function transferir() {
     // obtém os valores dos campos de login
-    var accountId = $('#accountId').val();
-    var value = $('#value').val();
+    var accountId = $('#favorecidoAccountId').val();
+    var value = $('#trasferValue').val();
 
     // faz a chamada para a API de login com os dados informados
     $.ajax({
-        url: API,
+        url: API + '/account/transfer',
         type: 'POST',
         contentType: 'application/json',
         headers: {
@@ -133,13 +133,13 @@ function transfer() {
     });
 }
 
-function montaOpcoes(data) {
+function criaOpcoesFavorecidos(data) {
     console.log(data);
     let options = ''
     data.forEach(element => {
         options += `<option value="${element.accountId}">${element.username}</option>`;
     });
-    document.getElementById('userList').innerHTML = options;
+    document.getElementById('favorecidosList').innerHTML = options;
 }
 
 //all

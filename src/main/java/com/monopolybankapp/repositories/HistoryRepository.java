@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface HistoryRepository extends JpaRepository<History, Long> {
 
-    @Query("select R from History H where H.originId == ?1 or H.destinyId == ?1")
+    @Query("select H from History H where H.originId = ?1 or H.destinyId = ?1")
     public List<History> findByOriginIdOrDestinyId(Long id);
 }

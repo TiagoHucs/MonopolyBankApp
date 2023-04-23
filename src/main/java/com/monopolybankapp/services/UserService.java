@@ -1,6 +1,5 @@
 package com.monopolybankapp.services;
 
-import com.monopolybankapp.Entities.Account;
 import com.monopolybankapp.Entities.LoginRequest;
 import com.monopolybankapp.Entities.User;
 import com.monopolybankapp.Entities.UserOption;
@@ -11,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +20,8 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private HistoryService historyService;
 
     public User getLoggerUser() {
         String username = UserContext.getUserInfo();
@@ -32,12 +34,13 @@ public class UserService {
 
 
     public void create(UserCreateVO userVo) {
+        BigDecimal inicialBalance =  BigDecimal.valueOf(1500);
         User user = new User();
         user.setUsername(userVo.getUsername());
         user.setPassword(userVo.getPassword());
-        Account account = new Account();
-        user.setAccount(account);
+        user.setBalance(inicialBalance);
         userRepository.save(user);
+        historyService.createHistory("Deposito",user,inicialBalance);
     }
 
     //TODO: findByUsername in repo
@@ -60,8 +63,12 @@ public class UserService {
         List<User> list = userRepository.findAll();
         List<UserOption> userOptionList = new ArrayList<>();
         for (User user: list) {
-            userOptionList.add(new UserOption(user.getAccount().getId(), user.getUsername()));
+            userOptionList.add(new UserOption(user.getId(), user.getUsername()));
         }
         return userOptionList;
+    }
+
+    public void save(User user) {
+        userRepository.save(user);
     }
 }

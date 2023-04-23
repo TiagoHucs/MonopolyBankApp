@@ -77,6 +77,13 @@ function getHome() {
             } else {
                 message(1, 'Erro ao acessar a página: ' + textStatus + jqXHR.status);
             }
+            //fake data
+            montaHome(
+                {balance:123,clientName:'juca',history:[
+                    {hora:'13:33',tipo:'Crédito',usuario:'Lucas',valor:'R$123,45'},
+                    {hora:'13:33',tipo:'Crédito',usuario:'Lucas',valor:'R$123,45'},
+                    {hora:'13:33',tipo:'Crédito',usuario:'Lucas',valor:'R$123,45'}
+                ]});
         }
     });
 }
@@ -84,6 +91,13 @@ function getHome() {
 function montaHome(data) {
     document.getElementById('clientBalance').innerText = data.balance;
     document.getElementById('clientName').innerText = data.clientName;
+    let tranferencias = '';
+    data.history.forEach(element => {
+        console.log(element);
+        tranferencias += '<tr><td>13:33</td><td>Credito</td><td>Joao</td><td>R$150,00</td></tr>';
+    });
+
+    document.getElementById('transferencias').innerHTML = tranferencias;
 }
 
 //tranferencias
@@ -125,10 +139,11 @@ function transferir() {
             value: value
         }),
         success: function (data) {
-            message(0, 'Transferido');
+            message(0, 'Transferência realizada com sucesso');
+            goTo('home.html')
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            message(1, 'Erro ao fazer login: ' + textStatus);
+            message(1, 'Erro ao transferir: ' + textStatus);
         }
     });
 }
@@ -158,32 +173,5 @@ function getToken() {
 }
 
 function message(code, msg) {
-    // Encontra a div da mensagem de sucesso
-    const successMessage = document.getElementById('success-message');
-
-    let status = ''
-
-    // define se erro ou sucesso
-    successMessage.classList.remove('msg-success', 'msg-error');
-    if (code !== 0) {
-        status = 'ERRO'
-        successMessage.classList.add('msg-error');
-    } else {
-        status = 'SUCESSO'
-        successMessage.classList.add('msg-success');
-    }
-
-
-    // Define o texto da mensagem
-    successMessage.innerText = status + '! ' + msg;
-
-
-    // Mostra a mensagem
-    successMessage.style.display = 'block';
-
-
-    // Espera 2 segundos e esconde a mensagem
-    setTimeout(() => {
-        successMessage.style.display = 'none';
-    }, 2000);
+    alert(msg)
 }

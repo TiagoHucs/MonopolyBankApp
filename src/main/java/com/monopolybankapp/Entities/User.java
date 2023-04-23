@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Getter
@@ -24,8 +25,6 @@ public class User {
     @Column(name = "PASSWORD")
     private String password;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "ACCOUNT", referencedColumnName = "ID")
-    private Account account;
-
+    @Column(name = "BALANCE",nullable = false)
+    private BigDecimal balance;
 }

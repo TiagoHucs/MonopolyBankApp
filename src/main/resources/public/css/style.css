@@ -31,4 +31,7 @@ hr{
 .msg-error{
     background-color: red;
 }
-  
+
+table,td{
+    color: white;
+}

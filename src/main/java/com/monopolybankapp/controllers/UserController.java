@@ -1,6 +1,5 @@
 package com.monopolybankapp.controllers;
 
-import com.monopolybankapp.Entities.User;
 import com.monopolybankapp.Entities.UserOption;
 import com.monopolybankapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,14 +23,14 @@ public class UserController {
     }
 
     @PostMapping("create")
-    public ResponseEntity<Void> create(@RequestBody UserCreateVO userVo){
+    public ResponseEntity<Void> create(@RequestBody RegisterUserVO userVo){
         userService.create(userVo);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @GetMapping("list")
     public ResponseEntity<List<UserOption>> getUsers(){
-        List<UserOption> userList = userService.listOptions();
+        List<UserOption> userList = userService.listTransferOptions();
         return ResponseEntity.ok(userList);
     }
 

@@ -19,12 +19,22 @@ public class User {
     @Column(name = "ID", updatable = false, nullable = false)
     private Long id;
 
-    @Column(name = "USERNAME")
-    private String username;
+    @Column(name = "FIRST_NAME", nullable = false)
+    private String firstName;
 
-    @Column(name = "PASSWORD")
+    @Column(name = "LAST_NAME", nullable = false)
+    private String lastName;
+
+    @Column(name = "EMAIL", nullable = false)
+    private String email;
+
+    @Column(name = "PASSWORD", nullable = false)
     private String password;
 
     @Column(name = "BALANCE",nullable = false)
     private BigDecimal balance;
+
+    public String getFullName(){
+        return this.firstName + ' ' + this.lastName;
+    }
 }

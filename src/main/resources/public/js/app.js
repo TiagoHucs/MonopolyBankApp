@@ -33,10 +33,13 @@ function saveToken(token) {
 }
 
 //cadastrar
-function cadastrar() {
+function register() {
     // obtém os valores dos campos de login
-    var username = $('#username').val();
-    var password = $('#password').val();
+    var inputFirstName = $('#inputFirstName').val();
+    var inputLastName = $('#inputLastName').val();
+    var inputEmail = $('#inputEmail').val();
+    var inputPassword = $('#inputPassword').val();
+    var repeatPassword = $('#repeatPassword').val();
 
     // faz a chamada para a API de login com os dados informados
     $.ajax({
@@ -44,8 +47,10 @@ function cadastrar() {
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({
-            username: username,
-            password: password
+            firstName: inputFirstName,
+            lastName: inputLastName,
+            email: inputEmail,
+            password: inputPassword
         }),
         success: function (data) {
             message(0, 'Usuario cadastrado com sucesso.');

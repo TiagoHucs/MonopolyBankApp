@@ -24,8 +24,9 @@ public class AppConfig implements WebMvcConfigurer {
                 .excludePathPatterns(
                         "/rest/login",
                         "/rest/users/create",
-                        "/home.html","/login.html","/cadastro.html","/transferencia.html",
-                        "/css/style.css","/js/app.js","/favicon.ico",
+                        "/vendor/**",
+                        "/login.html","/register.html",
+                        "/css/**","/js/**","/favicon.ico",
                         "/error",
                         "/h2");
     }

@@ -41,11 +41,11 @@ public class History {
 
     public void setOrigin(User origin) {
         this.setOriginId(origin.getId());
-        this.setOriginName(origin.getUsername());
+        this.setOriginName(origin.getFullName());
     }
     public void setDestiny(User destiny) {
         this.setDestinyId(destiny.getId());
-        this.setDestinyName(destiny.getUsername());
+        this.setDestinyName(destiny.getFullName());
     }
 
     @PrePersist

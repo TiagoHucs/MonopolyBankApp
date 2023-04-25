@@ -3,7 +3,7 @@ package com.monopolybankapp.services;
 import com.monopolybankapp.Entities.LoginRequest;
 import com.monopolybankapp.Entities.User;
 import com.monopolybankapp.Entities.UserOption;
-import com.monopolybankapp.controllers.UserCreateVO;
+import com.monopolybankapp.controllers.RegisterUserVO;
 import com.monopolybankapp.repositories.UserRepository;
 import com.monopolybankapp.security.UserContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class UserService {
 
     public User getLoggerUser() {
         String username = UserContext.getUserInfo();
-        return getUserByUsername(username);
+        return getUserByEmail(username);
     }
 
     public User getUser(Long id){
@@ -33,10 +33,12 @@ public class UserService {
     }
 
 
-    public void create(UserCreateVO userVo) {
+    public void create(RegisterUserVO userVo) {
         BigDecimal inicialBalance =  BigDecimal.valueOf(1500);
         User user = new User();
-        user.setUsername(userVo.getUsername());
+        user.setFirstName(userVo.getFirstName());
+        user.setLastName(userVo.getLastName());
+        user.setEmail(userVo.getEmail());
         user.setPassword(userVo.getPassword());
         user.setBalance(inicialBalance);
         userRepository.save(user);
@@ -46,24 +48,24 @@ public class UserService {
     //TODO: findByUsername in repo
     public User getUser(LoginRequest loginRequest) {
         User user = new User();
-        user.setUsername(loginRequest.getUsername());
+        user.setEmail(loginRequest.getEmail());
         user.setPassword(loginRequest.getPassword());
         Example<User> example = Example.of(user);
         List<User> users = userRepository.findAll(example);
         return users.isEmpty() ? null : users.get(0);
     }
 
-    public User getUserByUsername(String username) {
+    public User getUserByEmail(String email) {
         User user = new User();
-        user.setUsername(username);
+        user.setEmail(email);
         return userRepository.findOne(Example.of(user)).get();
     }
 
-    public List<UserOption> listOptions() {
+    public List<UserOption> listTransferOptions() {
         List<User> list = userRepository.findAll();
         List<UserOption> userOptionList = new ArrayList<>();
         for (User user: list) {
-            userOptionList.add(new UserOption(user.getId(), user.getUsername()));
+            userOptionList.add(new UserOption(user.getId(), user.getEmail()));
         }
         return userOptionList;
     }

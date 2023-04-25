@@ -40,7 +40,7 @@ public class BankService {
     public HomeDetails getHomeDetails() {
         User user = userService.getLoggerUser();
         return HomeDetails.builder()
-                .clientName(user.getUsername())
+                .clientName(user.getFullName())
                 .balance(user.getBalance())
                 .history(historyService.getHistory(user.getId()))
                 .build();

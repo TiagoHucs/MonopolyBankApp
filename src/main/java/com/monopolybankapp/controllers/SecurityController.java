@@ -31,12 +31,12 @@ public class SecurityController {
     public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest){
         User user = userService.getUser(loginRequest);
         if(user != null){
-            String username = loginRequest.getUsername();
+            String username = loginRequest.getEmail();
             String token = jwtUtils.generateToken(username);
-            LOGGER.log(Level.INFO,loginRequest.getUsername() + " logou com sucesso!");
+            LOGGER.log(Level.INFO,loginRequest.getEmail() + " logou com sucesso!");
             return ResponseEntity.ok(token);
         } else {
-            LOGGER.log(Level.INFO,loginRequest.getUsername() + " login com erro!");
+            LOGGER.log(Level.INFO,loginRequest.getEmail() + " login com erro!");
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
     }

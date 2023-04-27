@@ -15,5 +15,4 @@ import java.util.List;
 public class HomeDetails {
     private String clientName;
     private BigDecimal balance;
-    private List<History> history;
 }

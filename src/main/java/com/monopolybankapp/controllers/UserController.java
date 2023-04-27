@@ -22,17 +22,10 @@ public class UserController {
         return ResponseEntity.ok(BigDecimal.ZERO);
     }
 
-    @PostMapping("create")
-    public ResponseEntity<Void> create(@RequestBody RegisterUserVO userVo){
-        userService.create(userVo);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
-    }
-
     @GetMapping("list")
     public ResponseEntity<List<UserOption>> getUsers(){
         List<UserOption> userList = userService.listTransferOptions();
         return ResponseEntity.ok(userList);
     }
-
 
 }

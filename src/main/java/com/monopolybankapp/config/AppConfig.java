@@ -1,6 +1,6 @@
 package com.monopolybankapp.config;
 
-import com.monopolybankapp.security.JwtInterceptor;
+import com.monopolybankapp.config.security.JwtInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,20 +21,22 @@ public class AppConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         //TODO: h2 only in dev
         registry.addInterceptor(jwtInterceptor)
-                .excludePathPatterns(
-                        "/rest/login",
+                .addPathPatterns("/rest/**");
+
+        /*                        "/rest/**",
+                        "/swagger","/swagger-ui.html","/webjars/**","/swagger-resources/**",
                         "/rest/users/create",
                         "/vendor/**",
                         "/login.html","/register.html",
                         "/css/**","/js/**","/favicon.ico",
                         "/error",
-                        "/h2");
+                        "/h2");*/
     }
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOriginPatterns("*")
+                .allowedOrigins("*")
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
                 .allowedHeaders("*")
                 .allowCredentials(true)
@@ -45,7 +47,7 @@ public class AppConfig implements WebMvcConfigurer {
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
-        config.addAllowedOriginPattern("*");
+        config.addAllowedOrigin("*");
         config.addAllowedMethod("GET");
         config.addAllowedMethod("POST");
         config.addAllowedMethod("PUT");

@@ -5,19 +5,20 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.10</version>
+        <version>2.3.0.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com</groupId>
-    <artifactId>MonopolyBankAppServer</artifactId>
+    <artifactId>MonopolyBankApi</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>MonopolyBankAppServer</name>
-    <description>Server for MonopolyBankApp</description>
+    <name>MonopolyBankApi</name>
+    <description>Api for MonopolyBank</description>
     <properties>
         <java.version>11</java.version>
         <jjwt.version>0.9.1</jjwt.version>
         <jaxb.runtime.version>3.0.2</jaxb.runtime.version>
         <lombok.version>1.18.26</lombok.version>
+        <swagger.version>2.9.2</swagger.version>
     </properties>
     <dependencies>
         <dependency>
@@ -52,6 +53,16 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${swagger.version}</version>
         </dependency>
     </dependencies>
     <build>

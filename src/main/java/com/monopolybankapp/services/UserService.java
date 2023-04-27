@@ -5,7 +5,7 @@ import com.monopolybankapp.Entities.User;
 import com.monopolybankapp.Entities.UserOption;
 import com.monopolybankapp.controllers.RegisterUserVO;
 import com.monopolybankapp.repositories.UserRepository;
-import com.monopolybankapp.security.UserContext;
+import com.monopolybankapp.config.security.UserContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
@@ -29,7 +29,7 @@ public class UserService {
     }
 
     public User getUser(Long id){
-        return userRepository.getReferenceById(id);
+        return userRepository.getOne(id);
     }
 
 

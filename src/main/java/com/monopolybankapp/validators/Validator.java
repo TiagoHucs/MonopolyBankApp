@@ -16,12 +16,13 @@ public class Validator {
     private UserService userService;
 
     public void tranfer(Long accontId, BigDecimal value) throws NegocioException {
-        User user = userService.getLoggerUser();
-        if(user == null){
+        User origin = userService.getLoggerUser();
+        User destiny = userService.getUser(accontId);
+        if(destiny == null){
             throw new NegocioException("Conta destino inexistente");
-        } else if(accontId.equals(user.getId())){
+        } else if(accontId.equals(origin.getId())){
             throw new NegocioException("Impossivel transferir para mesma conta");
-        } else if(BigDecimalUtil.isLessThan(user.getBalance(),value)){
+        } else if(BigDecimalUtil.isLessThan(origin.getBalance(),value)){
             throw new NegocioException("Saldo insuficiente");
         }
     }

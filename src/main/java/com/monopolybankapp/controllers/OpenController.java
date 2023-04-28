@@ -3,6 +3,7 @@ package com.monopolybankapp.controllers;
 import com.monopolybankapp.Entities.LoginRequest;
 import com.monopolybankapp.Entities.User;
 import com.monopolybankapp.config.security.JwtUtils;
+import com.monopolybankapp.controllers.vo.RegisterUserVO;
 import com.monopolybankapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

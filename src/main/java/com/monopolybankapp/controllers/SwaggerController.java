@@ -8,7 +8,7 @@ import springfox.documentation.annotations.ApiIgnore;
 
 @ApiIgnore
 @RestController
-public class SwaggerHtmlRedirector {
+public class SwaggerController {
     @RequestMapping(method = RequestMethod.GET,path = "/")
     public RedirectView redirectWithUsingRedirectView() {
         return new RedirectView("/swagger-ui.html");

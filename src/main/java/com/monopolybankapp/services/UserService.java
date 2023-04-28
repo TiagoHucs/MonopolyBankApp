@@ -3,7 +3,7 @@ package com.monopolybankapp.services;
 import com.monopolybankapp.Entities.LoginRequest;
 import com.monopolybankapp.Entities.User;
 import com.monopolybankapp.Entities.UserOption;
-import com.monopolybankapp.controllers.RegisterUserVO;
+import com.monopolybankapp.controllers.vo.RegisterUserVO;
 import com.monopolybankapp.repositories.UserRepository;
 import com.monopolybankapp.config.security.UserContext;
 import org.springframework.beans.factory.annotation.Autowired;

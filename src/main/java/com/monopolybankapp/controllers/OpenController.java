@@ -36,15 +36,15 @@ public class OpenController {
             return ResponseEntity.ok(token);
         } else {
             LOGGER.log(Level.INFO,loginRequest.getEmail() + " login com erro!");
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Não autorizado");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Não autorizado!");
         }
     }
 
     @PostMapping("create-user")
-    public ResponseEntity<Void> create(@RequestBody RegisterUserVO userVo){
+    public ResponseEntity<String> create(@RequestBody RegisterUserVO userVo){
         userService.create(userVo);
         LOGGER.log(Level.INFO,"Usuario " + userVo.getFirstName() + " Criado com sucesso!");
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        return ResponseEntity.status(HttpStatus.CREATED).body("Usuário criado com sucesso!");
     }
 
 }

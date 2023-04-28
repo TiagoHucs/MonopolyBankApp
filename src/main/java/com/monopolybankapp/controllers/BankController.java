@@ -7,6 +7,7 @@ import com.monopolybankapp.services.BankService;
 import com.monopolybankapp.validators.Validator;
 import io.swagger.annotations.ApiImplicitParam;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,10 +29,10 @@ public class BankController {
 
     @PostMapping("transfer")
     @ApiImplicitParam(name = "Authorization", value = "Access Token", required = true, allowEmptyValue = false, paramType = "header", dataTypeClass = String.class, example = "Bearer access_token")
-    public ResponseEntity<Void> transfer(@RequestBody TransferVO transfer) throws NegocioException {
+    public ResponseEntity<String> transfer(@RequestBody TransferVO transfer) throws NegocioException {
         accountValidator.tranfer(transfer.getAccountId(),transfer.getValue());
         bankService.transfer(transfer.getAccountId(),transfer.getValue());
-        return ResponseEntity.accepted().build();
+        return ResponseEntity.status(HttpStatus.CREATED).body("Transferência realizada com sucesso!");
     }
 
 

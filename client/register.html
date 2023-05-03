@@ -19,8 +19,9 @@
     <label for="repeatPassword">Repeat Password:</label><br>
     <input type="password" id="repeatPassword"/><br>
     <button id="btnRegister">Register</button>
-    <p id="demo"></p>
-<script>
+
+    <script>
+    const API = 'http://localhost:5000/rest';
     let inputFirstName = document.getElementById("inputFirstName");
     let inputLastName = document.getElementById("inputLastName");
     let inputEmail = document.getElementById("inputEmail");
@@ -53,6 +54,27 @@
     function submitRegister() {
         console.log(getLoginFormObject())
     }
+
+     
+
+
+function registerCall() {
+    var username = $('#username').val();
+    var password = $('#password').val();
+    $.ajax({
+        url: API + '/create-user/',
+        type: 'POST',
+        contentType: 'application/json',
+        data: getLoginFormObject(),
+        success: function (data) {
+            alert('Usuario cadastrado com sucesso!');
+            window.location.href = 'login.html';
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert('Erro ao fazer cadastrar usuario!');
+        }
+    });
+}
 
 </script>
 </body>

@@ -1,15 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>MB - Home</title>
 </head>
+
 <body>
     <h1>Monopoly Bank</h1>
     <hr>
-    <h2>Home</h2>
+    <h2 id="greetings">Bem vindo</h2>
+    <script>
+        const API = 'http://localhost:5000/rest/';
+        let greetings = document.getElementById("greetings");
 
+        function getToken() {
+            return localStorage.getItem('token');
+        }
+
+
+        function getHome() {
+            $.ajax({
+                url: API + 'home',
+                type: 'GET',
+                headers: {
+                    Authorization: 'Bearer ' + getToken()
+                },
+                success: function (data) {
+                    console.log(data);
+                    buildHome(data);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    if (jqXHR.status === 401) {
+                        window.location.href = 'login.html';
+                    } else {
+                        message(1, 'Erro ao acessar a página: ' + textStatus + jqXHR.status);
+                    }
+                }
+            });
+        }
+
+        function buildHome(data){
+            greetings.innerText = `Bem vindo ${data.clientName} seu saldo é: ${data.balance}`
+        }
+
+        getHome();
+    </script>
 </body>
+
 </html>

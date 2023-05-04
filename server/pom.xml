@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com</groupId>
-    <artifactId>MonopolyBankApi</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>MonopolyBankApi</name>
-    <description>Api for MonopolyBank</description>
+    <artifactId>MonopolyBankServer</artifactId>
+    <version>1.0.0</version>
+    <name>MonopolyBankServer</name>
+    <description>Server for MonopolyBank</description>
     <properties>
         <java.version>11</java.version>
         <jjwt.version>0.9.1</jjwt.version>
@@ -53,16 +53,6 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>${swagger.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>${swagger.version}</version>
         </dependency>
     </dependencies>
     <build>

@@ -3,4 +3,4 @@ RUN mkdir /app
 WORKDIR /app
 COPY . /app
 EXPOSE 5000
-CMD ["java", "-jar", "target/MonopolyBankAppServer-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "target/MonopolyBankServer-1.0.0.jar"]

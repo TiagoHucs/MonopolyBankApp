@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>MB - Register</title>
 </head>
 <body>
@@ -21,7 +22,7 @@
     <button id="btnRegister">Register</button>
 
     <script>
-    const API = 'http://localhost:5000/rest';
+    const API = 'http://localhost:5000/rest/';
     let inputFirstName = document.getElementById("inputFirstName");
     let inputLastName = document.getElementById("inputLastName");
     let inputEmail = document.getElementById("inputEmail");
@@ -38,43 +39,35 @@
         if(inputPassword.value != repeatPassword.value){
             alert('As senhas nao coicidem');
         } else {
+            console.log(getLoginFormObject())
             submitRegister()
         }
     }
     
     function getLoginFormObject(){
-        return {
+        return JSON.stringify({
             firstName: inputFirstName.value,
             lastName: inputLastName.value,
             email: inputEmail.value,
             password: inputPassword.value,
-        } 
-    }
+        })
+    } 
 
     function submitRegister() {
-        console.log(getLoginFormObject())
+        $.ajax({
+            url: API + 'create-user/',
+            type: 'POST',
+            contentType: 'application/json',
+            data: getLoginFormObject(),
+            success: function (data) {
+                alert('Usuario cadastrado com sucesso!');
+                window.location.href = 'login.html';
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert('Erro ao fazer cadastrar usuario!');
+            }
+        });
     }
-
-     
-
-
-function registerCall() {
-    var username = $('#username').val();
-    var password = $('#password').val();
-    $.ajax({
-        url: API + '/create-user/',
-        type: 'POST',
-        contentType: 'application/json',
-        data: getLoginFormObject(),
-        success: function (data) {
-            alert('Usuario cadastrado com sucesso!');
-            window.location.href = 'login.html';
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            alert('Erro ao fazer cadastrar usuario!');
-        }
-    });
-}
 
 </script>
 </body>
